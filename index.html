@@ -32,6 +32,8 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
 
         <script src='https://cdnjs.cloudflare.com/ajax/libs/tabletop.js/1.5.1/tabletop.min.js'></script>
+     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css" />
+     <script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js"></script>
         <script type='text/javascript'>    
             // Handbars helpers
             Handlebars.registerHelper('type', function(event) {
@@ -47,6 +49,9 @@
             });
 
             // Tabletop
+            window.App = {};
+            App.events = [];
+            
             var publicSpreadsheetUrl = 'https://docs.google.com/spreadsheets/d/1jo_9r2-7a3W2uwQqjAD9KtSeNiqMb43wP0XjXrz4J8w/pubhtml';
             function init() {
                 Tabletop.init( { key: publicSpreadsheetUrl,
@@ -78,6 +83,7 @@
                 approvedEvents.sort(function(a,b) {
                     return new Date(a["start-date"]) - new Date(b["start-date"]);
                 });
+                App.events = approvedEvents;
                 
                 // Create three arraays, one for upcoming one for past & one for today
                 var eventsToday = _.filter(approvedEvents, function(event){
@@ -104,8 +110,8 @@
                     $('#event-listing').prepend('<div class="alert alert-warning" role="alert"><h3>Happening now</h3><div class="event-listing-today"></div></div>');
                     $('.event-listing-today').html(htmlToday);
                 }
+                App.showMap();
             }
-
             window.addEventListener('DOMContentLoaded', init)
         </script>
 
@@ -127,6 +133,7 @@
                 <h3 class="text-muted">Event calendar: Trust, verification, fact checking & beyond</h3>
                 <p class="text-muted">Curated by the MisinfoCon community</p>
             </div>
+            <div id="event-map"></div>
 
             <div class="jumbotron">
                 <h2>Can we talk about misinformation?</h2>
