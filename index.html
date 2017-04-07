@@ -59,8 +59,9 @@
             function showInfo(data, tabletop) {
                 // Create three arraays, one for upcoming one for past & one for today
                 var eventsToday = _.filter(data, function(event){
-                    return Sugar.Date.isToday(event["end-date"])
+                    return Sugar.Date.isBetween(new Date(), event["start-date"], event["end-date"]);
                 });
+                console.log(eventsToday);
                 var eventsUpcoming = _.filter(data, function(event){
                     return Sugar.Date.isFuture(event["end-date"])
                 });
