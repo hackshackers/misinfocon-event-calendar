@@ -88,7 +88,7 @@
                 $('.event-listing-past').html(htmlPast);
                 // If there are any events today, add a heading and div
                 if ( eventsToday.length > 0 ) {
-                    $('#event-listing').prepend('<div class="alert alert-info" role="alert"><h3>Happening now</h3><div class="event-listing-today"></div></div>');
+                    $('#event-listing').prepend('<div class="alert alert-warning" role="alert"><h3>Happening now</h3><div class="event-listing-today"></div></div>');
                     $('.event-listing-today').html(htmlToday);
                 }
             }
