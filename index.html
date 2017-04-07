@@ -57,14 +57,23 @@
             }
 
             function showInfo(data, tabletop) {
+                // First, let's get rid of events that are not reviewed
+                var approvedEvents = _.filter(data, function(event){
+                    return event["reviewed"] === "Yes";
+                });
+                // Sort by date, descending
+                approvedEvents.sort(function(a,b) {
+                    return new Date(a["start-date"]) - new Date(b["start-date"]);
+                });
+                
                 // Create three arraays, one for upcoming one for past & one for today
-                var eventsToday = _.filter(data, function(event){
+                var eventsToday = _.filter(approvedEvents, function(event){
                     return Sugar.Date.isBetween(new Date(), event["start-date"], event["end-date"]);
                 });
-                var eventsUpcoming = _.filter(data, function(event){
-                    return Sugar.Date.isFuture(event["end-date"])
+                var eventsUpcoming = _.filter(approvedEvents, function(event){
+                    return Sugar.Date.isFuture(event["start-date"])
                 });
-                var eventsPast = _.filter(data, function(event){
+                var eventsPast = _.filter(approvedEvents, function(event){
                     return Sugar.Date.isPast(event["end-date"]);
                 });
 
@@ -79,7 +88,7 @@
                 $('.event-listing-past').html(htmlPast);
                 // If there are any events today, add a heading and div
                 if ( eventsToday.length > 0 ) {
-                    $('#event-listing').prepend('<h3>Happening today!</h3><div class="event-listing-today"></div>');
+                    $('#event-listing').prepend('<div class="alert alert-info" role="alert"><h3>Happening now</h3><div class="event-listing-today"></div></div>');
                     $('.event-listing-today').html(htmlToday);
                 }
             }
