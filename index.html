@@ -165,6 +165,7 @@
             <dt><h4>{{{type this}}}&nbsp;<a class="url" href="{{url}}">{{event}}</a></h4></dt>
             <dd><abbr class="dtstart" title="{{start-date-mmddyy}}">{{start-nice}}</abbr>-
                 <abbr class="dtend" title="{{end-date-mmddyy}}">{{end-nice}}</abbr>
+            {{#if hashtag}}&nbsp;|&nbsp;<a href="https://twitter.com/hashtag/{{hashtag}}">#{{hashtag}}</a>{{/if}}
             </dd>
             <dd><span class="location">{{city}}, {{country}}</span></dd>
             <dd><span class="summary">{{{description-html}}}</span></dd>
@@ -177,6 +178,7 @@
             <dt><h4>{{{type this}}}&nbsp;<a class="url" href="{{urlarchived}}">{{event}}</a></h4></dt>
             <dd><abbr class="dtstart" title="{{start-date-mmddyy}}">{{start-nice}}</abbr>-
                 <abbr class="dtend" title="{{end-date-mmddyy}}">{{end-nice}}</abbr>
+            {{#if hashtag}}&nbsp;|&nbsp;<a href="https://twitter.com/hashtag/{{hashtag}}">#{{hashtag}}</a>{{/if}}
             </dd>
             <dd><span class="location">{{city}}, {{country}}</span></dd>
             <dd><span class="summary">{{{description-html}}}</span></dd>
