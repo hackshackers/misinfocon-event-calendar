@@ -98,11 +98,13 @@
 
 
                 // Same template, but different divs
-                var source   = $("#event-template").html();
-                var template = Handlebars.compile(source);
-                var htmlToday    = template(eventsToday);
-                var htmlUpcoming    = template(eventsUpcoming);
-                var htmlPast    = template(eventsPast);
+                var sourceFuture   = $("#event-template-future").html();
+                var sourcePast   = $("#event-template-past").html();
+                var templateFuture = Handlebars.compile(sourceFuture);
+                var templatePast = Handlebars.compile(sourcePast);
+                var htmlToday    = templateFuture(eventsToday);
+                var htmlUpcoming    = templateFuture(eventsUpcoming);
+                var htmlPast    = templatePast(eventsPast);
                 $('.event-listing-upcoming').html(htmlUpcoming);
                 $('.event-listing-past').html(htmlPast);
                 // If there are any events today, add a heading and div
@@ -157,10 +159,22 @@
 
         </div> <!-- /container -->
 
-        <script id="event-template" type="text/x-handlebars-template">
+        <script id="event-template-future" type="text/x-handlebars-template">
             {{#each this}}
             <dl class="vevent">
             <dt><h4>{{{type this}}}&nbsp;<a class="url" href="{{url}}">{{event}}</a></h4></dt>
+            <dd><abbr class="dtstart" title="{{start-date-mmddyy}}">{{start-nice}}</abbr>-
+                <abbr class="dtend" title="{{end-date-mmddyy}}">{{end-nice}}</abbr>
+            </dd>
+            <dd><span class="location">{{city}}, {{country}}</span></dd>
+            <dd><span class="summary">{{{description-html}}}</span></dd>
+            </dl>
+            {{/each}}
+        </script>
+        <script id="event-template-past" type="text/x-handlebars-template">
+            {{#each this}}
+            <dl class="vevent">
+            <dt><h4>{{{type this}}}&nbsp;<a class="url" href="{{urlarchived}}">{{event}}</a></h4></dt>
             <dd><abbr class="dtstart" title="{{start-date-mmddyy}}">{{start-nice}}</abbr>-
                 <abbr class="dtend" title="{{end-date-mmddyy}}">{{end-nice}}</abbr>
             </dd>
