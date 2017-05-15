@@ -300,7 +300,7 @@ body {
 /* Custom page header */
 .header {
   padding-bottom: 20px;
-  border-bottom: 1px solid #e5e5e5;
+  /*border-bottom: 1px solid #e5e5e5;*/
 }
 /* Make the masthead heading the same height as the navigation */
 .header h3 {
@@ -332,8 +332,11 @@ body {
   border-bottom: 1px solid #e5e5e5;
 }
 .jumbotron .btn {
-  padding: 14px 24px;
-  font-size: 21px;
+  /*padding: 14px 24px;*/
+  /*font-size: 21px;*/
+}
+.jumbotron p {
+    font-size: 1em;
 }
 
 /* Supporting marketing content */
@@ -355,17 +358,33 @@ body {
   }
   /* Space out the masthead */
   .header {
-    margin-bottom: 30px;
+    /*margin-bottom: 30px;*/
   }
   /* Remove the bottom border on the jumbotron for visual effect */
   .jumbotron {
     border-bottom: 0;
   }
+    .jumbotron .btn {
+      padding: 14px 24px;
+      font-size: 21px;
+    }
+    .jumbotron p {
+        font-size: 1.4em;
+    }
 }
 
+/* Additions & Overrides */
 
 #event-map { 
     height: 380px; 
     margin-bottom: 20px;
 }
 
+.h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
+    line-height: 1.4;
+    margin-bottom: 0px;
+}
+
+h1.page-title {
+    line-height: 1.1em;
+}

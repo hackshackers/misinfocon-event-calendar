@@ -11,7 +11,6 @@
         <!-- Place favicon.ico in the root directory -->
 
         <!--<link rel="stylesheet" href="css/normalize.css">-->
-        <link rel="stylesheet" href="css/main.css">
         <script src="js/vendor/modernizr-2.8.3.min.js"></script>
         <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -25,6 +24,7 @@
 
         <!-- Optional theme -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+        <link rel="stylesheet" href="css/main.css">
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.6/handlebars.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/sugar/2.0.4/sugar.min.js"></script>
@@ -130,8 +130,8 @@
                         <!--<li role="presentation"><a href="#">Contact</a></li>-->
                         <!--</ul>-->
                     <!--</nav>-->
-                <h3 class="text-muted">Event calendar: Trust, verification, fact checking & beyond</h3>
-                <p class="text-muted">Curated by the MisinfoCon community</p>
+                <h1 class="page-title text-muted">Event calendar: Trust, verification, fact checking & beyond</h1>
+                <p class="text-muted">Curated by the <a href="https://misinfocon.com/">MisinfoCon community</a>.<br />Built with ❤️ by <a href="https://twitter.com/phillipadsmith">@phillipadsmith</a> on <a href="https://github.com/hackshackers/misinfocon-event-calendar">GitHub</a>.</p>
             </div>
             <div class="visible-md visible-lg" id="event-map"></div>
 
@@ -139,7 +139,7 @@
                 <h2>Can we talk about misinformation?</h2>
                 <p class="lead">There are a lot of conversations happening right now about misinformation, disinformation, rumours, and so-called "fake news." The event listing below is an attempt to catalogue when and where those conversations are happening, and to provide links to follow-up material from those conversations. You can help out by filling in the blanks: What's missing?</p>
                 <p><a class="btn btn-primary btn-sm" href="http://bit.ly/misinformation-events-calendar" role="button">Submit an event</a>&nbsp;&nbsp;<a class="btn btn-primary btn-sm" href="http://eepurl.com/cBO3UX" role="button">Subscribe for updates</a></p>
-                <p><small>Pssst... You can also just <a href="https://twitter.com/misinfocon">tweet at us here</a>.</small></p>
+                <p class="small">Pssst... You can also just <a href="https://twitter.com/misinfocon">tweet at us here</a>.</p>
             <p class="small">Add these events to your calendar or website: <a target="_blank" href="https://calendar.google.com/calendar/ical/8ud28gvrvurgkqoqi935q9m524%40group.calendar.google.com/public/basic.ics"><img src="//calendar.google.com/googlecalendar/images/ical.gif"></a>&nbsp;<a target="_blank" href="https://calendar.google.com/calendar/embed?src=8ud28gvrvurgkqoqi935q9m524%40group.calendar.google.com&amp;ctz=America/Vancouver"><img src="//calendar.google.com/googlecalendar/images/html.gif"></a></p>
             </div>
 
@@ -160,10 +160,9 @@
         <script id="event-template" type="text/x-handlebars-template">
             {{#each this}}
             <dl class="vevent">
-            <dt><h4><a class="url" href="{{url}}">{{event}}</a></h4></dt>
+            <dt><h4>{{{type this}}}&nbsp;<a class="url" href="{{url}}">{{event}}</a></h4></dt>
             <dd><abbr class="dtstart" title="{{start-date-mmddyy}}">{{start-nice}}</abbr>-
                 <abbr class="dtend" title="{{end-date-mmddyy}}">{{end-nice}}</abbr>
-                &nbsp;&nbsp;{{{type this}}}
             </dd>
             <dd><span class="location">{{city}}, {{country}}</span></dd>
             <dd><span class="summary">{{{description-html}}}</span></dd>
