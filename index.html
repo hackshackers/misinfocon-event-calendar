@@ -89,7 +89,7 @@
                 
                 // Create three arraays, one for upcoming one for past & one for today
                 var eventsToday = _.filter(approvedEvents, function(event){
-                    return Sugar.Date.isBetween(new Date(), event["start-date"], event["end-date"]);
+                    return Sugar.Date.isToday(event["start-date"]) || Sugar.Date.isBetween(new Date(), event["start-date"], event["end-date"]);
                 });
                 var eventsUpcoming = _.filter(approvedEvents, function(event){
                     return Sugar.Date.isFuture(event["start-date"])
@@ -97,7 +97,6 @@
                 var eventsPast = _.filter(approvedEvents, function(event){
                     return Sugar.Date.isPast(event["end-date"]);
                 });
-
 
                 // Same template, but different divs
                 var sourceFuture   = $("#event-template-future").html();
