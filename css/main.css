@@ -389,3 +389,8 @@ body {
 h1.page-title {
     line-height: 1.1em;
 }
+
+.IN-widget {
+    position: relative;
+    top: 5px;
+}
