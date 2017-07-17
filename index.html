@@ -58,7 +58,8 @@
             function init() {
                 Tabletop.init( { key: publicSpreadsheetUrl,
                               callback: showInfo,
-                              simpleSheet: true,
+                              // Now we have multiple sheets
+                              //simpleSheet: true,
                               parseNumbers: true,
                               prettyColumnNames: false,
                               postProcess: function(element) {
@@ -71,14 +72,15 @@
                                   element["end-date"] = Sugar.Date.create(dateEnd);
                                   element["end-date-mmddyy"] = Sugar.Date.format(element["end-date"], '%m-%d-%y');
                                   element["end-nice"] = Sugar.Date.medium(element["end-date"]);
-                                  element["description-html"] = markdown.toHTML(element["description"]);
+                                  element["description"] ? element["description-html"] = markdown.toHTML(element["description"]): '';
                               }  
                 } )
             }
 
             function showInfo(data, tabletop) {
+                var events = data["Public calendar"].elements;
                 // First, let's get rid of events that are not reviewed
-                var approvedEvents = _.filter(data, function(event){
+                var approvedEvents = _.filter(events, function(event){
                     return event["reviewed"] === "Yes";
                 });
                 // Sort by date, descending
